@@ -7,8 +7,15 @@ const { platform, username } = Astro.props;
 <style>
   a {
     padding: 0.5rem 1rem;
-    color: white;
-    background-color: #4c1d95;
+    color: var(--btn-text); /* Token semántico */
     text-decoration: none;
+    border-radius: 4px; /* Opcional: mejora visual */
+    background-color: var(--brand-primary); /* En vez de #4c1d95 */
+    color: var(--text-inverse);
+  }
+
+  /* Opcional: Hover state */
+  a:hover {
+    filter: brightness(1.1);
   }
 </style>
