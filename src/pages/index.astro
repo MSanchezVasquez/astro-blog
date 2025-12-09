@@ -1,10 +1,63 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Greeting from "../components/Greeting";
-const pageTitle = "Página de inicio";
+import Card from "../components/Card.astro"; // Importamos el nuevo componente
+
+// Obtenemos los posts y los ordenamos por fecha
+const allPosts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const pageTitle = "Cheatsheets & Dev Blog";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h2>Mi impresionante subtítulo del blog</h2>
-  <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
+  <div class="hero">
+    <h1>Recursos para Desarrolladores</h1>
+    <p>Tutoriales, snippets y guías rápidas de desarrollo web.</p>
+  </div>
+
+  <section class="grid-container">
+    {
+      allPosts.map((post) => (
+        <Card
+          url={`/posts/${post.id}/`}
+          title={post.data.title}
+          description={post.data.description}
+          tags={post.data.tags}
+          framework={post.data.framework}
+        />
+      ))
+    }
+  </section>
 </BaseLayout>
+
+<style>
+  /* Estilo tipo "Landing" simple */
+  .hero {
+    margin-bottom: 3rem;
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(
+      45deg,
+      var(--brand-primary),
+      var(--brand-accent)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* LA GRILLA MAGICA */
+  .grid-container {
+    display: grid;
+    /* Esto crea columnas automáticas que no bajan de 300px */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding-bottom: 3rem;
+  }
+</style>
