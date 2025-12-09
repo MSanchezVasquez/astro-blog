@@ -1,5 +1,8 @@
 /* DESIGN TOKENS*/
 :root {
+  /* TIPOGRAFÍA */
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+
   /* PRIMITIVOS (Paleta de Colores)*/
   --color-slate-100: #f1f5f9;
   --color-navy-900: #0d0950;
@@ -195,4 +198,47 @@ html.dark a {
 .btn-primary:hover {
   opacity: 0.9;
   color: var(--text-inverse);
+}
+
+p code,
+li code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background-color: var(--tag-bg);
+  padding: 0.1rem 0.3rem;
+  border-radius: var(--radius-sm);
+  color: var(--brand-primary);
+}
+
+pre {
+  position: relative;
+  padding: 2.5rem 1rem 1rem 1rem;
+  border-radius: var(--radius-md);
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* El "Header" de la ventana (Los 3 puntitos estilo Mac) */
+pre::before {
+  content: "";
+  position: absolute;
+  top: 0.8rem;
+  left: 1rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+
+  background-color: #ff5f56;
+  box-shadow: 1.2rem 0 0 #ffbd2e, 2.4rem 0 0 #27c93f;
+}
+
+pre > code {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  background-color: transparent;
 }

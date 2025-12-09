@@ -15,6 +15,10 @@ const blog = defineCollection({
       alt: z.string(),
     }),
     tags: z.array(z.string()),
+
+    difficulty: z.enum(["básico", "intermedio", "avanzado"]).default("básico"),
+    isDraft: z.boolean().default(false),
+    framework: z.string().optional(),
   }),
 });
 // Exporta un solo objeto `collections` para registrar tus colecciones
