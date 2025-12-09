@@ -242,3 +242,26 @@ pre > code {
   line-height: 1.7;
   background-color: transparent;
 }
+
+/* ESTILOS PARA NOTAS / CITAS (Callouts) */
+blockquote {
+  background-color: var(--color-blue-100);
+
+  border-left: 5px solid var(--brand-primary);
+
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+
+  /* Tipografía */
+  font-style: italic;
+  color: var(--text-main);
+}
+
+/* Ajuste para MODO OSCURO */
+html.dark blockquote {
+  /* En dark mode, el azul claro es muy fuerte, usamos una transparencia */
+  background-color: rgba(60, 20, 150, 0.25);
+  border-left-color: var(--brand-accent);
+}

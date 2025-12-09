@@ -26,3 +26,10 @@ isDraft: false
 ## Próximos pasos
 
 Terminaré el tutorial de Astro, y luego seguiré añadiendo más publicaciones. Mira este espacio para más por venir.
+
+## Prueba de código
+
+```javascript
+console.log("¡Hola mundo!");
+const astro = "increíble";
+```
