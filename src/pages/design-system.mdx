@@ -1,0 +1,118 @@
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Tag from "../components/Tag.astro";
+
+<BaseLayout pageTitle="Moschino UI: Guía de Estilos">
+
+Esta página documenta los tokens de diseño y componentes principales de **Moschino UI**. Sirve como referencia para mantener la consistencia en el desarrollo.
+
+## 1. Paleta de Colores (Tokens)
+
+Aquí están los colores primitivos y semánticos definidos en `global.css`.
+
+### Colores de Marca
+
+<div
+  style={{
+    display: "flex",
+    gap: "1rem",
+    flexWrap: "wrap",
+    marginBottom: "2rem",
+  }}
+>
+  <div
+    style={{
+      backgroundColor: "var(--brand-primary)",
+      width: "100px",
+      height: "100px",
+      borderRadius: "8px",
+      padding: "10px",
+      color: "white",
+      fontSize: "0.8rem",
+    }}
+  >
+    Brand Primary
+  </div>
+  <div
+    style={{
+      backgroundColor: "var(--brand-accent)",
+      width: "100px",
+      height: "100px",
+      borderRadius: "8px",
+      padding: "10px",
+      color: "black",
+      fontSize: "0.8rem",
+    }}
+  >
+    Brand Accent
+  </div>
+</div>
+
+### Colores de UI (Neutros)
+
+<div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+  <div
+    style={{
+      backgroundColor: "var(--bg-card)",
+      border: "1px solid #ccc",
+      width: "100px",
+      height: "100px",
+      borderRadius: "8px",
+      padding: "10px",
+      color: "var(--text-main)",
+      fontSize: "0.8rem",
+    }}
+  >
+    Card Background
+  </div>
+  <div
+    style={{
+      backgroundColor: "var(--color-slate-100)",
+      width: "100px",
+      height: "100px",
+      borderRadius: "8px",
+      padding: "10px",
+      color: "black",
+      fontSize: "0.8rem",
+    }}
+  >
+    Slate 100
+  </div>
+  <div
+    style={{
+      backgroundColor: "var(--color-navy-900)",
+      width: "100px",
+      height: "100px",
+      borderRadius: "8px",
+      padding: "10px",
+      color: "white",
+      fontSize: "0.8rem",
+    }}
+  >
+    Navy 900
+  </div>
+</div>
+
+---
+
+## 2. Tipografía
+
+### Fuente Principal
+
+_Sans-serif (System Default)_
+
+> El veloz murciélago hindú comía feliz cardillo y kiwi.
+
+### Fuente de Código (DX)
+
+_`var(--font-mono)`_
+
+```css
+.ejemplo {
+  font-family: var(--font-mono);
+  color: var(--brand-primary);
+}
+```
+
+> **Nota:** Este es un componente de "Callout" generado automáticamente a partir de un blockquote. Ideal para advertencias o consejos.
+
+</BaseLayout>
