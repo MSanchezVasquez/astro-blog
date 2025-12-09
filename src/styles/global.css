@@ -14,6 +14,16 @@
   --color-black: #000000;
   --color-gray-800: #1f2937;
 
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-4: 1rem; /* 16px */
+  --space-8: 2rem; /* 32px */
+  --space-16: 4rem; /* 64px */
+
+  --layout-width: 80ch;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+
   /* SEMÁNTICOS */
   /* MODO CLARO (Por defecto) */
 
@@ -71,7 +81,7 @@ html {
 body {
   margin: 0 auto;
   width: 100%;
-  max-width: 80ch;
+  max-width: var(--layout-width);
   padding: 1rem;
   line-height: 1.5;
 }
@@ -167,4 +177,22 @@ html.dark a {
   .hamburger {
     display: none;
   }
+}
+
+.btn-primary {
+  background-color: var(--brand-accent);
+  color: var(--text-main);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity 0.2s;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  color: var(--text-inverse);
 }
