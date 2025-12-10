@@ -1,69 +1,263 @@
 ---
-import "../styles/global.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const pageTitle = "Moises Sanchez";
+const pageTitle = "Sobre Mí";
 
 const identity = {
   firstName: "Moises",
-  country: "Peru",
-  occupation: "Ingeniero de software",
-  hobbies: ["futbol", "lectura", "peñarol"],
+  role: "Junior Frontend Engineer",
+  location: "Chiclayo, Peru",
+  bio: "Ingeniero de software apasionado por la accesibilidad y los Design Systems. Construyo experiencias web que no solo se ven bien, sino que funcionan para todos.",
+  image: "https://docs.astro.build/assets/arc.webp", // Puedes cambiar esto por tu foto real en /public
 };
 
 const skills = [
-  "HTML",
-  "CSS",
-  "JavaScript",
-  "React",
-  "Astro",
-  "Redacción de documentos",
+  { name: "JavaScript", icon: "⚡" },
+  { name: "React", icon: "⚛️" },
+  { name: "Astro", icon: "🚀" },
+  { name: "TypeScript", icon: "📘" },
+  { name: "Tailwind", icon: "🎨" },
+  { name: "Node.js", icon: "🟢" },
 ];
 
-const happy = true;
-const finished = true;
-const goal = 3;
+const experience = [
+  {
+    role: "Senior Frontend Dev",
+    company: "Tech Corp",
+    date: "2023 - Presente",
+    desc: "Liderando la migración a Astro y defininedo el Design System.",
+  },
+  {
+    role: "Web Developer",
+    company: "Freelance",
+    date: "2020 - 2023",
+    desc: "Desarrollo de sitios web accesibles para clientes internacionales.",
+  },
+];
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h2>... ¡y mi nuevo sitio Astro!</h2>
+  <div class="about-container">
+    {/* SECCIÓN 1: BIO & FOTO (2 Columnas) */}
+    <section class="profile-header">
+      <div class="bio-content">
+        <span class="greeting">Hola, soy {identity.firstName} 👋</span>
+        <h1>{identity.role}</h1>
+        <p class="lead">{identity.bio}</p>
+        <div class="location">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+            ></path><circle cx="12" cy="10" r="3"></circle></svg
+          >
+          {identity.location}
+        </div>
+      </div>
 
-  <p>
-    Estoy trabajando en el tutorial introductorio de Astro. Esta es la segunda
-    página de mi sitio web, ¡y es la primera que he construido yo mismo!
-  </p>
+      <div class="profile-image">
+        <img src={identity.image} alt={`Foto de ${identity.firstName}`} />
+      </div>
+    </section>
 
-  <p>
-    Este sitio se irá actualizando a medida que vaya completando más partes del
-    tutorial, ¡así que no dejes de visitarlo para ver cómo va mi viaje!
-  </p>
-  <p>He aquí algunos datos sobre mí:</p>
-  <ul>
-    <li>Me llamo {identity.firstName}.</li>
-    <li>Vivo en {identity.country} y trabajo como {identity.occupation}.</li>
-    {
-      identity.hobbies.length >= 2 && (
-        <li>
-          Dos de mis aficiones son: {identity.hobbies[0]} y{" "}
-          {identity.hobbies[1]}
-        </li>
-      )
-    }
-  </ul>
-  <p>Mis habilidades son:</p>
-  <ul>
-    {skills.map((skill) => <li class="skill">{skill}</li>)}
-  </ul>
+    {/* SECCIÓN 2: STACK TECNOLÓGICO */}
+    <section class="stack-section">
+      <h2>Stack Tecnológico</h2>
+      <div class="skills-grid">
+        {
+          skills.map((skill) => (
+            <div class="skill-item">
+              <span class="skill-icon">{skill.icon}</span>
+              <span class="skill-name">{skill.name}</span>
+            </div>
+          ))
+        }
+      </div>
+    </section>
 
-  {happy && <p>¡Estoy feliz de aprender Astro!</p>}
-
-  {finished && <p>¡He terminado este tutorial!</p>}
-
-  {
-    goal === 3 ? (
-      <p>Mi objetivo es terminar en 3 días.</p>
-    ) : (
-      <p>Mi objetivo no son 3 días.</p>
-    )
-  }
+    {/* SECCIÓN 3: TIMELINE / EXPERIENCIA */}
+    <section class="timeline-section">
+      <h2>Trayectoria</h2>
+      <div class="timeline">
+        {
+          experience.map((item) => (
+            <div class="timeline-item">
+              <div class="timeline-marker" />
+              <div class="timeline-content">
+                <h3>
+                  {item.role} <span class="company">@ {item.company}</span>
+                </h3>
+                <span class="date">{item.date}</span>
+                <p>{item.desc}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </div>
 </BaseLayout>
+
+<style>
+  .about-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem; /* Espacio entre secciones */
+  }
+
+  /* HEADER PROFILE */
+  .profile-header {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* Texto más ancho que la foto */
+    gap: 3rem;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    .profile-header {
+      grid-template-columns: 1fr; /* Columna simple en móvil */
+      text-align: center;
+    }
+    .profile-image {
+      order: -1;
+      margin: 0 auto;
+    } /* Foto arriba en móvil */
+  }
+
+  .greeting {
+    font-family: var(--font-mono);
+    color: var(--brand-primary);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  h1 {
+    font-size: 3rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    color: var(--color-gray-400);
+    margin-bottom: 1.5rem;
+  }
+
+  .location {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-main);
+    opacity: 0.8;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .location {
+      justify-content: center;
+    }
+  }
+
+  .profile-image img {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 2rem;
+    transform: rotate(3deg); /* Un toque de diseño divertido */
+    transition: transform 0.3s ease;
+    box-shadow: 20px 20px 0 var(--color-slate-100); /* Sombra sólida decorativa */
+  }
+
+  :global(.dark) .profile-image img {
+    box-shadow: 20px 20px 0 var(--color-navy-900);
+  }
+
+  .profile-image img:hover {
+    transform: rotate(0deg) scale(1.02);
+  }
+
+  /* SKILLS GRID */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+  }
+
+  .skill-item {
+    background-color: var(--bg-card);
+    border: 1px solid var(--color-gray-400);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    text-align: center;
+    transition:
+      transform 0.2s,
+      border-color 0.2s;
+  }
+
+  .skill-item:hover {
+    border-color: var(--brand-primary);
+    transform: translateY(-2px);
+  }
+
+  .skill-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .skill-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    border-left: 2px solid var(--color-gray-400);
+    padding-left: 2rem;
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .timeline-item {
+    position: relative;
+  }
+
+  .timeline-marker {
+    position: absolute;
+    left: -2.6rem; /* Ajuste preciso para centrar en la línea */
+    top: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--brand-primary);
+    border: 4px solid var(--bg-body); /* Efecto "cortar" la línea */
+    border-radius: 50%;
+  }
+
+  .timeline-content h3 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+
+  .company {
+    color: var(--color-gray-400);
+    font-weight: normal;
+  }
+
+  .date {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--brand-primary);
+    margin: 0.5rem 0 1rem 0;
+  }
+</style>
