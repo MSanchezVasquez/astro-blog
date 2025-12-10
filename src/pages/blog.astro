@@ -1,23 +1,48 @@
 ---
-import "../styles/global.css";
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import BlogPost from "../components/BlogPost.astro";
+import BlogPreview from "../components/BlogPreview.astro";
 
-const allPosts = await getCollection("blog");
+// Obtenemos todos los posts y los ordenamos por fecha (del más nuevo al más viejo)
+const allPosts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
 
-const pageTitle = "Blog Page";
+const pageTitle = "Artículos";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <p>Aquí es donde publicaré sobre mi viaje de aprendizaje Astro.</p>
-  <ul>
-    {
-      allPosts.map((post) => (
-        <BlogPost url={`/posts/${post.id}/`} title={post.data.title} />
-      ))
-    }
-  </ul>
+  <header class="page-header">
+    <h1>Archivo de Artículos</h1>
+    <p>Todos mis escritos sobre desarrollo, ordenados cronológicamente.</p>
+  </header>
 
-  <!-- Código cliente -->
+  <section class="feed">
+    {allPosts.map((post) => <BlogPreview post={post} />)}
+  </section>
 </BaseLayout>
+
+<style>
+  .page-header {
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-gray-400);
+  }
+
+  .page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: var(--brand-primary);
+  }
+
+  .page-header p {
+    font-size: 1.25rem;
+    color: var(--color-gray-400);
+    max-width: 60ch;
+  }
+
+  .feed {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+</style>
