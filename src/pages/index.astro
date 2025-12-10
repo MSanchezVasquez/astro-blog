@@ -1,63 +1,48 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Card from "../components/Card.astro"; // Importamos el nuevo componente
+import BlogPreview from "../components/BlogPreview.astro";
 
-// Obtenemos los posts y los ordenamos por fecha
 const allPosts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
-const pageTitle = "Cheatsheets & Dev Blog";
+const pageTitle = "Blog de Desarrollo Web";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <div class="hero">
-    <h1>Recursos para Desarrolladores</h1>
-    <p>Tutoriales, snippets y guías rápidas de desarrollo web.</p>
-  </div>
-
-  <section class="grid-container">
-    {
-      allPosts.map((post) => (
-        <Card
-          url={`/posts/${post.id}/`}
-          title={post.data.title}
-          description={post.data.description}
-          tags={post.data.tags}
-          framework={post.data.framework}
-        />
-      ))
-    }
+  <section class="intro">
+    <h1>Artículos Recientes</h1>
+    <p>
+      Explorando el ecosistema web, desde los fundamentos hasta arquitecturas
+      complejas.
+    </p>
   </section>
+
+  <div class="feed">
+    {allPosts.map((post) => <BlogPreview post={post} />)}
+  </div>
 </BaseLayout>
 
 <style>
-  /* Estilo tipo "Landing" simple */
-  .hero {
-    margin-bottom: 3rem;
-    text-align: center;
-    padding: 2rem 0;
+  .intro {
+    margin-bottom: 4rem;
+    border-bottom: 4px solid var(--brand-primary); /* Un toque de diseño fuerte arriba */
+    padding-bottom: 2rem;
   }
 
-  .hero h1 {
-    font-size: 2.5rem;
+  .intro h1 {
+    font-size: 3rem;
     margin-bottom: 0.5rem;
-    background: linear-gradient(
-      45deg,
-      var(--brand-primary),
-      var(--brand-accent)
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
   }
 
-  /* LA GRILLA MAGICA */
-  .grid-container {
-    display: grid;
-    /* Esto crea columnas automáticas que no bajan de 300px */
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
-    padding-bottom: 3rem;
+  .intro p {
+    font-size: 1.25rem;
+    color: var(--color-gray-400);
+  }
+
+  .feed {
+    max-width: 800px; /* Limitamos el ancho del texto para que sea cómodo de leer */
+    margin: 0 auto; /* Centrado */
   }
 </style>
