@@ -1,0 +1,44 @@
+---
+title: "¿Grid o Flexbox? Cuándo usar cuál"
+pubDate: 2025-12-12
+description: "Aprende a distinguir los casos de uso para los dos sistemas de layout más potentes de CSS."
+author: "Moises Sanchez"
+image:
+  url: "https://docs.astro.build/default-og-image.png"
+  alt: "Layouts web"
+tags: ["css", "diseño", "frontend"]
+difficulty: "básico"
+framework: "css"
+---
+
+Una duda eterna en el frontend: ¿Uso Flexbox o CSS Grid? La respuesta corta es: **usa ambos**.
+
+## La Regla de Oro
+
+- **Flexbox:** Es unidimensional. Úsalo para una fila O una columna (alinear items en un navbar, centrar un div).
+- **Grid:** Es bidimensional. Úsalo para filas Y columnas a la vez (el esqueleto de toda tu página).
+
+## Ejemplo de Grid
+
+CSS Grid brilla cuando necesitas estructuras complejas:
+
+```css
+.galeria {
+  display: grid; /* Crea columnas automáticas que no bajen de 200px */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+```
+
+Tip Pro: No necesitas frameworks como Bootstrap para hacer grillas hoy en día. Con 3 líneas de CSS nativo puedes lograr layouts responsivos increíbles.
+
+Ejemplo de Flexbox
+Flexbox es el rey de la alineación de contenido:
+
+```css
+.boton-centrado {
+  display: flex;
+  justify-content: center; /* Vertical */
+  align-items: center; /* Vertical */
+}
+```

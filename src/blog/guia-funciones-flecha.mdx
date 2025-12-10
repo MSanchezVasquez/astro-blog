@@ -1,0 +1,48 @@
+---
+title: "Domina las Funciones Flecha en JavaScript"
+pubDate: 2025-12-10
+description: "Una guía completa para entender la sintaxis más popular de ES6: Arrow Functions."
+author: "Moises Sanchez"
+image:
+  url: "https://docs.astro.build/assets/arc.webp"
+  alt: "Código JavaScript abstracto"
+tags: ["javascript", "es6", "fundamentos"]
+difficulty: "básico"
+framework: "javascript"
+---
+
+Las funciones flecha (Arrow Functions) llegaron con ES6 para cambiar la forma en que escribimos JavaScript. No son solo una forma más corta de escribir funciones, también cambian cómo se comporta el contexto `this`.
+
+## Sintaxis Básica
+
+La diferencia visual es inmediata. Eliminamos la palabra clave `function` y usamos la flecha `=>`.
+
+```javascript
+// Función tradicional
+function sumar(a, b) {
+  return a + b;
+}
+
+// Arrow Function
+const sumarFlecha = (a, b) => a + b;
+```
+
+Nota: Si la función tiene una sola línea de código, el return es implícito. ¡No necesitas escribirlo!
+
+El problema del this
+Una de las mayores ventajas es que las funciones flecha no crean su propio contexto this. Heredan el contexto del padre.
+
+```javascript
+const usuario = {
+  nombre: "Moises",
+  saludar: function () {
+    // Aquí 'this' es el objeto usuario
+    setTimeout(() => {
+      // Gracias a la arrow function, 'this' sigue siendo el usuario
+      console.log(`Hola, soy ${this.nombre}`);
+    }, 1000);
+  },
+};
+```
+
+Úsalas siempre que necesites preservar el contexto o escribir callbacks limpios.

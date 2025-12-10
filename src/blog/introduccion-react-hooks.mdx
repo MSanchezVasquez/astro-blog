@@ -1,0 +1,47 @@
+---
+title: "Introducción a los React Hooks: useState y useEffect"
+pubDate: 2025-12-13
+description: "Los fundamentos para manejar estado y efectos secundarios en componentes funcionales."
+author: "Moises Sanchez"
+image:
+  url: "https://docs.astro.build/assets/rose.webp"
+  alt: "React logo abstracto"
+tags: ["react", "hooks", "frontend"]
+difficulty: "intermedio"
+framework: "react"
+---
+
+Los Hooks revolucionaron React en la versión 16.8, permitiéndonos usar estado y ciclo de vida sin escribir clases.
+
+## 1. useState
+
+Es la memoria de tu componente.
+
+```jsx
+import { useState } from "react";
+
+function Contador() {
+  const [cuenta, setCuenta] = useState(0);
+
+  return (
+    <button onClick={() => setCuenta(cuenta + 1)}>Click me: {cuenta}</button>
+  );
+}
+```
+
+2. useEffect
+   Maneja los "efectos secundarios" (peticiones API, suscripciones, timers). Reemplaza a componentDidMount, componentDidUpdate y componentWillUnmount.
+
+```javascript
+import { useEffect } from "react";
+
+useEffect(() => {
+  console.log("El componente se montó");
+
+  return () => {
+  console.log("El componente se desmontó (limpieza)");
+  }
+}, []); // El array vacío significa: "ejecuta solo al montar"
+
+Nota: Es crucial entender el array de dependencias (el segundo argumento). Si lo omites, el efecto se ejecutará en cada render, lo que puede causar bucles infinitos.
+```
