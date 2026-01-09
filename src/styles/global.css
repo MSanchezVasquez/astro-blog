@@ -63,20 +63,23 @@
 
 /* MODO OSCURO (Redefinición de Semánticos) */
 html.dark {
-  --bg-body: var(--color-navy-900);
+  --bg-body: #0f172a;
+  --bg-card: #1e293b;
+  --text-main: #f8fafc;
+  --text-muted: #cbd5e1;
+  --text-inverse: #0f172a;
 
-  --text-main: var(--color-white);
-  --text-inverse: var(--color-black);
+  --brand-primary: #818cf8;
+  --brand-accent: #fbbf24;
 
-  --nav-bg-mobile: var(--color-white);
-  --nav-text-mobile: var(--color-black);
-  --nav-item-hover: var(--color-navy-900);
+  /* UI Elements */
+  --nav-bg-mobile: #1e293b;
+  --nav-text-mobile: #f8fafc;
+  --nav-item-hover: #334155;
 
-  --text-link: var(--color-orange-400);
-
-  --tag-bg: var(--color-gray-800);
-  --tag-border: var(--color-gray-400);
-  --tag-text: var(--text-accent);
+  --tag-bg: rgba(129, 140, 248, 0.15);
+  --tag-border: rgba(129, 140, 248, 0.4);
+  --tag-text: #e0e7ff;
 }
 
 /* ESTILOS GLOBALES (Usando los Tokens) */
@@ -116,11 +119,24 @@ h3 {
 p {
   font-size: 1.125rem;
   line-height: 1.75;
-  color: var(--color-gray-800);
 }
 
-:global(.dark) p {
-  color: var(--color-gray-400);
+:global(.dark) p,
+:global(.dark) li,
+:global(.dark) .description {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+:global(.dark) h1,
+:global(.dark) h2,
+:global(.dark) h3 {
+  color: var(--text-main);
+}
+
+:global(.dark) .site-header {
+  background-color: rgba(15, 23, 42, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 a {
