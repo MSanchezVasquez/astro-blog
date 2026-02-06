@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const pageTitle = "mos.dev";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <section class="intro">
+    <h1>Imagen a Pantalla Completa</h1>
+    <p>
+      Esta página muestra una imagen a pantalla completa utilizando Astro y CSS.
+      Puedes usar esta plantilla para mostrar cualquier imagen que quieras
+      destacar.
+    </p>
+  </section>
+
+  <div class="full-image-container">
+    <img
+      src="https://4kwallpapers.com/images/walls/thumbs_3t/25220.jpg"
+      alt="Imagen a Pantalla Completa"
+      class="full-image"
+      transition:name="profile-image"
+    />
+  </div></BaseLayout
+>

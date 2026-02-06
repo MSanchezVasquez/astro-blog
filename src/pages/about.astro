@@ -8,7 +8,7 @@ const identity = {
   role: "Junior Frontend Engineer",
   location: "Chiclayo, Peru",
   bio: "Ingeniero de software apasionado por la accesibilidad y los Design Systems. Construyo experiencias web que no solo se ven bien, sino que funcionan para todos.",
-  image: "https://docs.astro.build/assets/arc.webp", // Puedes cambiar esto por tu foto real en /public
+  image: "https://4kwallpapers.com/images/walls/thumbs_3t/25220.jpg", // Puedes cambiar esto por tu foto real en /public
 };
 
 const skills = [
@@ -62,9 +62,15 @@ const experience = [
         </div>
       </div>
 
-      <div class="profile-image">
-        <img src={identity.image} alt={`Foto de ${identity.firstName}`} />
-      </div>
+      <a href="/full-image"
+        ><div class="profile-image">
+          <img
+            src={identity.image}
+            alt={`Foto de ${identity.firstName}`}
+            transition:name="profile-image"
+          />
+        </div>
+      </a>
     </section>
 
     {/* SECCIÓN 2: STACK TECNOLÓGICO */}
