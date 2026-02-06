@@ -1,5 +1,3 @@
-### 1\. El archivo `README.md` actualizado
-
 # 🚀 Astro A11y Blog & Design System
 
 Este proyecto es una implementación moderna de un sitio web estático utilizando **Astro**, enfocado en la **arquitectura de software escalable**, **accesibilidad (a11y)**, **Content Collections** y el uso de **Design Tokens**.
