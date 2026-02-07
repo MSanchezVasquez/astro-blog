@@ -1,7 +1,7 @@
 ---
-import Hamburger from "./Hamburger.astro";
+import Hamburger from "./Hamburger.jsx";
 import Navigation from "./Navigation.astro";
-import ThemeIcon from "./ThemeIcon.astro";
+import ThemeIcon from "./ThemeIcon.jsx";
 ---
 
 <header class="site-header">
@@ -9,8 +9,8 @@ import ThemeIcon from "./ThemeIcon.astro";
     <Navigation />
 
     <div class="controls">
-      <ThemeIcon />
-      <Hamburger />
+      <ThemeIcon client:load />
+      <Hamburger client:load />
     </div>
   </nav>
 </header>

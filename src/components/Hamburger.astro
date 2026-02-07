@@ -7,3 +7,10 @@
   <span class="line"></span>
   <span class="line"></span>
 </div>
+
+<script is:inline>
+  const btn = document.querySelector(".hamburger");
+  btn?.addEventListener("click", () => {
+    document.querySelector(".nav-links")?.classList.toggle("expanded");
+  });
+</script>
