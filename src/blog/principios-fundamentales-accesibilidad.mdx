@@ -1,0 +1,72 @@
+---
+title: "Los 4 Principios Fundamentales (POUR)"
+pubDate: 2026-02-23
+description: "Para que el contenido web sea accesible."
+author: "Moises Sanchez"
+image:
+  url: "./public/posts/pour.png"
+  alt: ""
+tags: ["web", "accesibilidad", "frontend"]
+difficulty: "básico"
+framework: "astro"
+---
+
+## 🏛️ Los 4 Principios Fundamentales (POUR)
+
+Para que el contenido web sea accesible, debe cumplir con 4 pilares:
+
+1. 👀 **Perceptible:** La información no puede ser invisible a todos los sentidos.
+   - _Ejemplo:_ Usar buen contraste de color y texto alternativo (`alt`) en imágenes.
+2. ⌨️ **Operable:** La interfaz debe poder manejarse con diferentes dispositivos.
+   - _Ejemplo:_ Todo debe poder navegarse usando solo el teclado (sin depender del efecto _hover_ del ratón).
+3. 🧠 **Comprensible:** El contenido y el funcionamiento no deben confundir al usuario.
+   - _Ejemplo:_ Mostrar mensajes de error claros en los formularios indicando qué falló.
+4. 💪 **Robusto:** El código debe ser estándar para funcionar en cualquier navegador y tecnología de asistencia (como lectores de pantalla).
+   - _Ejemplo:_ Usar etiquetas HTML semánticas (`<button>`, `<nav>`, `<article>`) en lugar de `<div>` para todo.
+
+---
+
+## 📊 Niveles de Conformidad
+
+Miden qué tan bien se cumplen los principios. Como una escalera, para llegar al AA, debes cumplir el A.
+
+- **Nivel A (Mínimo):** Elimina barreras críticas (Ej. navegación por teclado).
+- **Nivel AA (Estándar):** El objetivo para el 99% de los proyectos. Lo exigen las leyes y cubre a la mayoría de las personas. (Ej. contraste mínimo de 4.5:1).
+- **Nivel AAA (Avanzado):** Nivel máximo, muy estricto y a veces imposible para todo el sitio (Ej. intérprete de señas en videos).
+
+---
+
+## 🛠️ Herramientas de Auditoría
+
+Extensiones de navegador gratuitas para detectar errores automáticamente:
+
+1. **WAVE:** Muy visual, inyecta iconos en la pantalla explicando el error.
+2. **axe DevTools:** Análisis profundo para desarrolladores, clasifica por gravedad.
+3. **Google Lighthouse:** Integrado en Chrome DevTools, da puntuación del 0 al 100.
+
+- _Bonus (Diseño):_ Plugins como Stark en Figma para revisar contraste y daltonismo antes de programar.
+
+---
+
+## 💻 Buenas Prácticas en Código
+
+### 1. HTML Semántico (Tarjeta de Producto)
+
+```html
+<article class="tarjeta-producto">
+  <img src="jarron.jpg" alt="Jarrón de cerámica andino" />
+  <h2>Jarrón Veta</h2>
+  <button aria-label="Agregar Jarrón Veta al carrito">
+    Agregar al carrito
+  </button>
+</article>
+```
+
+_Aporte:_ El atributo `aria-label` da contexto exacto al lector de pantalla sin cambiar el diseño visual.
+
+### 2. Alertas Dinámicas (JavaScript/React/Vue)
+
+Cuando la página cambia sin recargar, los lectores de pantalla necesitan saberlo usando **Live Regions**:
+
+- `aria-live="polite"`: Para notificaciones normales (Ej. "Producto agregado"). Espera a que el usuario termine su acción para leerlo.
+- `aria-live="assertive"`: Para errores críticos. Interrumpe al usuario inmediatamente para leer la alerta.
